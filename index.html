@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Javier & Saday · 4 años</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crema: #FDF8F3;
+  --crema-oscura: #F5EDE4;
+  --canela: #8B6B4A;
+  --canela-claro: #C4A88A;
+  --canela-suave: #DCC9B8;
+  --dorado: #D4A553;
+  --dorado-suave: #E8C88A;
+  --dorado-brillante: #E8B84B;
+  --terracota: #C97B63;
+  --terracota-suave: #E8A88A;
+  --gris: #F0EAE4;
+  --texto: #2C2C2C;
+  --texto-suave: #5A4A3A;
+  --sombra: rgba(139, 107, 74, 0.15);
+  --sombra-fuerte: rgba(139, 107, 74, 0.25);
+  --font-titulos: 'Cormorant Garamond', serif;
+  --font-cuerpo: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--crema);
+  font-family: var(--font-cuerpo);
+  padding: 2rem;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(212, 165, 83, 0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(201, 123, 99, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card {
+  max-width: 820px;
+  width: 100%;
+  background: #ffffff;
+  padding: 3.5rem 3.5rem 3.5rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px var(--sombra);
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(212, 165, 83, 0.10);
+  transition: box-shadow 0.5s ease, transform 0.5s ease;
+  z-index: 1;
+}
+
+.card:hover {
+  box-shadow: 0 30px 80px var(--sombra-fuerte);
+  transform: translateY(-4px);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 4px;
+  background: linear-gradient(to right, var(--dorado), var(--terracota), var(--dorado));
+  border-radius: 0 0 4px 4px;
+}
+
+.esquina {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: var(--dorado-suave);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.25;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .esquina {
+  opacity: 0.4;
+}
+
+.esquina-tl { top: 24px; left: 24px; border-top-width: 2px; border-left-width: 2px; border-radius: 4px 0 0 0; }
+.esquina-tr { top: 24px; right: 24px; border-top-width: 2px; border-right-width: 2px; border-radius: 0 4px 0 0; }
+.esquina-bl { bottom: 24px; left: 24px; border-bottom-width: 2px; border-left-width: 2px; border-radius: 0 0 0 4px; }
+.esquina-br { bottom: 24px; right: 24px; border-bottom-width: 2px; border-right-width: 2px; border-radius: 0 0 4px 0; }
+
+.foto-container {
+  width: 100%;
+  max-width: 560px;
+  height: 380px;
+  margin: 0 auto 2.2rem auto;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 3px solid var(--dorado);
+  box-shadow: 0 8px 30px var(--sombra);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
+}
+
+.foto-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(212, 165, 83, 0.05) 0%, transparent 50%, rgba(201, 123, 99, 0.05) 100%);
+  pointer-events: none;
+  border-radius: 14px;
+}
+
+.foto-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0 12px 45px var(--sombra-fuerte);
+}
+
+.foto-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.foto-container:hover img {
+  transform: scale(1.05);
+}
+
+.linea {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(to right, var(--dorado), var(--terracota), var(--dorado));
+  margin: 0 auto 2rem auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+.linea::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--dorado);
+  font-size: 0.7rem;
+  background: #fff;
+  padding: 0 10px;
+  opacity: 0.6;
+}
+
+.dedicatoria {
+  font-size: 1.35rem;
+  line-height: 2.5;
+  color: var(--texto);
+  margin-bottom: 2.2rem;
+  font-weight: 300;
+  text-align: left;
+}
+
+.dedicatoria p {
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.dedicatoria p:first-child {
+  font-size: 1.5rem;
+  font-family: var(--font-titulos);
+  color: var(--canela);
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.dedicatoria p:first-child strong {
+  color: var(--terracota);
+  font-weight: 700;
+}
+
+.dedicatoria .nombre {
+  font-weight: 600;
+  color: var(--canela);
+  transition: color 0.3s ease;
+}
+
+.dedicatoria .nombre:hover {
+  color: var(--dorado);
+}
+
+.cita-final {
+  font-family: var(--font-titulos);
+  font-size: 1.2rem;
+  color: var(--canela);
+  text-align: center;
+  font-style: italic;
+  padding: 0 1rem;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.cita-final::before {
+  content: '"';
+  font-size: 2.5rem;
+  color: var(--dorado-suave);
+  position: absolute;
+  left: -0.5rem;
+  top: -0.5rem;
+  opacity: 0.4;
+}
+
+.cita-final::after {
+  content: '"';
+  font-size: 2.5rem;
+  color: var(--dorado-suave);
+  position: absolute;
+  right: -0.5rem;
+  bottom: -0.5rem;
+  opacity: 0.4;
+}
+
+/* ===== FECHA MEJORADA ===== */
+.fecha {
+  font-size: 1.15rem;
+  color: var(--canela-claro);
+  margin-top: 2rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(212, 165, 83, 0.15);
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.fecha .fecha-principal {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--canela);
+  font-family: var(--font-titulos);
+  letter-spacing: 3px;
+}
+
+.fecha .fecha-principal strong {
+  color: var(--dorado);
+  font-weight: 600;
+}
+
+.fecha .fecha-detalle {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--canela-claro);
+  letter-spacing: 4px;
+  margin-top: 0.3rem;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.fecha .separador {
+  color: var(--dorado-suave);
+  margin: 0 0.6rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 650px) {
+  .card {
+    padding: 2.2rem 1.8rem 2.2rem;
+    border-radius: 16px;
+  }
+  .foto-container {
+    height: 250px;
+  }
+  .dedicatoria {
+    font-size: 1.1rem;
+    line-height: 2.2;
+  }
+  .dedicatoria p:first-child {
+    font-size: 1.3rem;
+  }
+  .esquina {
+    width: 20px;
+    height: 20px;
+  }
+  .esquina-tl, .esquina-tr { top: 16px; }
+  .esquina-tl, .esquina-bl { left: 16px; }
+  .esquina-tr, .esquina-br { right: 16px; }
+  .esquina-bl, .esquina-br { bottom: 16px; }
+  .fecha .fecha-principal {
+    font-size: 1.2rem;
+  }
+  .cita-final {
+    font-size: 1rem;
+  }
+  .linea {
+    width: 80px;
+  }
+}
+
+@media (max-width: 450px) {
+  .card {
+    padding: 1.8rem 1.2rem 1.8rem;
+    border-radius: 12px;
+  }
+  .foto-container {
+    height: 190px;
+    border-width: 2px;
+  }
+  .dedicatoria {
+    font-size: 0.95rem;
+    line-height: 2;
+  }
+  .dedicatoria p:first-child {
+    font-size: 1.1rem;
+  }
+  .fecha {
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+  }
+  .fecha .fecha-principal {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+  .fecha .fecha-detalle {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+  }
+  .esquina {
+    width: 14px;
+    height: 14px;
+  }
+  .esquina-tl, .esquina-tr { top: 12px; }
+  .esquina-tl, .esquina-bl { left: 12px; }
+  .esquina-tr, .esquina-br { right: 12px; }
+  .esquina-bl, .esquina-br { bottom: 12px; }
+  .cita-final {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+  .cita-final::before,
+  .cita-final::after {
+    font-size: 1.8rem;
+  }
+  .linea {
+    width: 60px;
+    margin: 0 auto 1.5rem auto;
+  }
+  .linea::after {
+    font-size: 0.5rem;
+    padding: 0 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 1.2rem 0.8rem 1.2rem;
+  }
+  .foto-container {
+    height: 150px;
+  }
+  .dedicatoria {
+    font-size: 0.85rem;
+    line-height: 1.9;
+  }
+  .dedicatoria p:first-child {
+    font-size: 0.95rem;
+  }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="esquina esquina-tl"></div>
+  <div class="esquina esquina-tr"></div>
+  <div class="esquina esquina-bl"></div>
+  <div class="esquina esquina-br"></div>
+
+  <div class="foto-container">
+    <img src="javiersaday.jpg" alt="Javier y Saday">
+  </div>
+
+  <div class="linea"></div>
+
+  <div class="dedicatoria">
+    <p>El 7 de septiembre de 2022 dijeron <strong>"sí"</strong> frente a Jehová y frente a los que más querían.</p>
+
+    <p>Cuatro años después, <span class="nombre">Javier</span> sigue endulzando vidas con sus pasteles y cakes, y su voz sigue animando la congregación con esa elocuencia que lo caracteriza. <span class="nombre">Saday</span> sigue pintando sonrisas en cada uña que arregla, y la suya propia no se apaga ni en los días grises.</p>
+
+    <p>Y en medio de todo, un bebé hermoso que ya corre y juega, llenando su hogar de ruido bueno, de ternura y de travesuras.</p>
+
+    <p>Aunque sus padres y hermanos estén lejos, al otro lado del mar, ellos han construido su propio pedacito de cielo en esta tierra. Una familia joven, unida, que se apoya y se ama.</p>
+
+    <p>Esa boda tan soñada, tan lindísima, fue solo el comienzo. Lo de verdad hermoso es lo que siguen edificando día tras día: un matrimonio firme, un hogar lleno de fe y un amor que crece con cada sonrisa, con cada pastel horneado y con cada oración compartida.</p>
+  </div>
+
+  <div class="fecha">
+    <div class="fecha-principal">
+      <strong>2022</strong> <span class="separador">✦</span> <strong>2026</strong>
+    </div>
+    <span class="fecha-detalle">7 de septiembre · 4 años</span>
+  </div>
+</div>
+</body>
+</html>
